@@ -1,0 +1,13 @@
+TODO:
+
+evaluate:
+
+feature definition - list of features, figure out how to evaluate each feature
+weighing features - (layers?) weigh layers higher, having completed side high, all 6 completed sides high, crosses > corner (on the same face only)
+
+state s -> look at 12 actions 
+take the action, calculate the features for each resulting, add to table, take most optimal 80% of time, if the same, choose randomly
+
+1/count for every action-state to discourage taking same action multiple times
+
+remove previous action from future action set
