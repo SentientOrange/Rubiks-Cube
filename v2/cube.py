@@ -7,4 +7,3 @@
 
 # We will construct this with a 3x3x3 traditional Rubik's Cube in mind
 
-
