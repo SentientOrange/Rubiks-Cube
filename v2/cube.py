@@ -35,6 +35,23 @@ class Cube:
       """
       # Rotate the face itself clockwise
       self.front = self.rotate_face(self.front)
+      # Perform the rotations on the edges
+      # The top and bottom edges can save values before transfer
+      new_top = [self.left[row][-1] for row in reversed(range(self.size))]
+      new_bottom = [self.right[row][0] for row in range(self.size)]
+      # Transfer top and bottom to the sides
+      # Top to right
+      for idx in range(self.size):
+         self.right[idx][0] = self.top[-1][idx]
+
+      # Bottom to left
+      for idx in range(self.size):
+         self.left[idx][-1] = self.bottom[0][idx]
+      
+      # Replace the top and bottom
+      self.top[-1] = new_top
+      self.bottom[0] = new_bottom
+      
 
    def rotate_back(self):
       """
