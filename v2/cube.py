@@ -70,3 +70,9 @@ class Cube:
       """
       # Rotate the face itself clockwise
       self.bottom = self.rotate_face(self.bottom)
+
+   def get_size(self):
+   	"""
+		Returns the n dimension of the cube
+		"""
+   	return self.size
