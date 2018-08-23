@@ -33,34 +33,40 @@ class Cube:
       """
       Rotate front face of the cube
       """
-      pass
+      # Rotate the face itself clockwise
+      self.front = self.rotate_face(self.front)
 
    def rotate_back(self):
       """
       Rotate back face of the cube
       """
-      pass
+      # Rotate the face itself clockwise
+      self.back = self.rotate_face(self.back)
 
    def rotate_left(self):
       """
       Rotate left face of the cube
       """
-      pass
+      # Rotate the face itself clockwise
+      self.left = self.rotate_face(self.left)
 
    def rotate_right(self):
       """
       Rotate right side clockwise
       """
-      pass
+      # Rotate the face itself clockwise  
+      self.right = self.rotate_face(self.right)
 
    def rotate_top(self):
       """
       Rotate top clockwise
       """
-      pass
+      # Rotate the face itself clockwisez 
+      self.top = self.rotate_face(self.top)
 
    def rotate_bottom(self):
       """
       Rotate bottom face clockwise
       """
-      pass
+      # Rotate the face itself clockwise
+      self.bottom = self.rotate_face(self.bottom)
