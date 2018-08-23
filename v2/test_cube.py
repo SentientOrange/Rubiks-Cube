@@ -36,3 +36,22 @@ def test_rotate_face():
    init = [[1,2,7],[2,3,1],[2,3,9]]
    clockwise_rotation = [[2,2,1],[3,3,2],[9,1,7]]
    assert c.rotate_face(init) == clockwise_rotation
+
+def test_rotate_front():
+   """
+   Test the front rotation method
+   """
+   c = cube.Cube()
+   # Perform the turn
+   c.rotate_front()
+   # The front face on initialization rotation should be the same
+   assert c.front == [[0 for x in range(3)] for y in range(3)]
+
+   # Assert the edges for the edges are correct
+   # Test
+   for idx in range(3):
+      assert c.left[idx][-1] == 5
+      assert c.top[-1][idx] == 1
+      assert c.bottom[0][idx] == 4
+      assert c.right[idx][0] == 3
+   
