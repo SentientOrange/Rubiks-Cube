@@ -6,21 +6,6 @@
 # An agent should be able to perform any of the different rotations which will allow the agent to solve the cube.
 
 # We will construct this with a 3x3x3 traditional Rubik's Cube in mind but account for variable size
-ACTIONS = ['front-face-right',
-   'back-face-right',
-   'left-face-right',
-   'right-face-right',
-   'top-face-right',
-   'bottom-face-right',
-   'front-face-left',
-   'back-face-left',
-   'left-face-left',
-   'right-face-left',
-   'top-face-left', 
-   'bottom-face-left',
-   'end'
-]
-
 
 class Cube:
    # Init the cube using a give size
@@ -33,3 +18,38 @@ class Cube:
       self.right = [[4 for x in range(size)] for x in range(size)]
       self.bottom = [[5 for x in range(size)] for x in range(size)]
 
+   def rotate_front(self):
+      """
+      Rotate front face of the cube
+      """
+      pass
+
+   def rotate_back(self):
+      """
+      Rotate back face of the cube
+      """
+      pass
+
+   def rotate_left(self):
+      """
+      Rotate left face of the cube
+      """
+      pass
+
+   def rotate_right(self):
+      """
+      Rotate right side clockwise
+      """
+      pass
+
+   def rotate_top(self):
+      """
+      Rotate top clockwise
+      """
+      pass
+
+   def rotate_bottom(self):
+      """
+      Rotate bottom face clockwise
+      """
+      pass
