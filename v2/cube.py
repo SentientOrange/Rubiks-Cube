@@ -261,19 +261,20 @@ class Cube:
    def is_solved(self):
       """
       Checks that the rubik's cube is solved. This can mean that each face has the same numeral in the 3x3 matrix
+      Uses the center pieces which shouldn't move to determine what goes where
       """
       solved = True
-      if self.__front__ != [[self.__front__[0][0] for x in range(self.__size__)] for x in range(self.__size__)]:
+      if self.__front__ != [[self.__front__[1][1] for x in range(self.__size__)] for x in range(self.__size__)]:
          solved = False
-      if self.__back__ != [[self.__back__[0][0] for x in range(self.__size__)] for x in range(self.__size__)]:
+      if self.__back__ != [[self.__back__[1][1] for x in range(self.__size__)] for x in range(self.__size__)]:
          solved = False
-      if self.__left__ != [[self.__left__[0][0] for x in range(self.__size__)] for x in range(self.__size__)]:
+      if self.__left__ != [[self.__left__[1][1] for x in range(self.__size__)] for x in range(self.__size__)]:
          solved = False
-      if self.__right__ != [[self.__right__[0][0] for x in range(self.__size__)] for x in range(self.__size__)]:
+      if self.__right__ != [[self.__right__[1][1] for x in range(self.__size__)] for x in range(self.__size__)]:
          solved = False
-      if self.__top__ != [[self.__top__[0][0] for x in range(self.__size__)] for x in range(self.__size__)]:
+      if self.__top__ != [[self.__top__[1][1] for x in range(self.__size__)] for x in range(self.__size__)]:
          solved = False
-      if self.__bottom__ != [[self.__bottom__[0][0] for x in range(self.__size__)] for x in range(self.__size__)]:
+      if self.__bottom__ != [[self.__bottom__[1][1] for x in range(self.__size__)] for x in range(self.__size__)]:
          solved = False
       # If we had no issues then the cube should be solved
       return solved
