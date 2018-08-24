@@ -2,7 +2,8 @@
 
 import pytest
 import cube
-import unittest.mock
+import unittest
+from unittest.mock import MagicMock
 
 def test_cube_size():
    c = cube.Cube()
