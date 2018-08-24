@@ -134,7 +134,7 @@ def test_rotate_right():
 
 def test_rotate_left():
     c = cube.Cube()
-    c.rotate_face = MagicMock(return_value=c.right)
+    c.rotate_face = MagicMock(return_value=c.left)
     c.rotate_left()
     assert c.top == [[2,3,3],[2,3,3],[2,3,3]]
     assert c.bottom == [[0,5,5],[0,5,5],[0,5,5]]
