@@ -18,6 +18,42 @@ class Cube:
       self.right = [[4 for x in range(self.size)] for x in range(self.size)]
       self.bottom = [[5 for x in range(self.size)] for x in range(self.size)]
 
+   def set_front(self, l):
+       if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+          self.front = l
+       else:
+           raise Exception("Input lists incorrect length")
+
+   def set_left(self, l):
+       if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+          self.left = l
+       else:
+           raise Exception("Input lists incorrect length")
+
+   def set_back(self, l):
+       if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+          self.back = l
+       else:
+           raise Exception("Input lists incorrect length")
+
+   def set_top(self, l):
+       if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+          self.top = l
+       else:
+           raise Exception("Input lists incorrect length")
+
+   def set_right(self, l):
+       if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+          self.right = l
+       else:
+           raise Exception("Input lists incorrect length")
+
+   def set_bottom(self, l):
+       if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+          self.bottom = l
+       else:
+           raise Exception("Input lists incorrect length")
+
    def rotate_face(self, matrix):
       """
       Takes in the 2 dimentional face representation and performs the matrix operation of clockwise rotation
