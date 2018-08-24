@@ -86,7 +86,7 @@ class Cube:
       new_bottom = [self.front[row][0] for row in reversed(range(self.size))]
 
       new_right = [self.top[idx][0] for idx in range(self.size)]
-      new_left = [self.bottom[idx][0] for idx in range(self.size)]
+      new_left = [self.bottom[idx][0] for idx in reversed(range(self.size))]
 
       # Transfer top and bottom to the sides
       # Top to right face in this orientation
@@ -94,7 +94,7 @@ class Cube:
          # Back to top
          self.top[idx][0] = new_top[idx]
          # Front to bottom
-         self.bottom[idx][-1] = new_bottom[idx]
+         self.bottom[idx][0] = new_bottom[idx]
          # top to front
          self.front[idx][0] = new_right[idx]
          # bottom to back
@@ -108,23 +108,23 @@ class Cube:
       self.right = self.rotate_face(self.right)
 
       # Grab the actual data being moved
-      new_top = [self.back[row][-1] for row in reversed(range(self.size))]
-      new_bottom = [self.front[row][0] for row in range(self.size)]
+      new_top = [self.front[row][-1] for row in range(self.size)]
+      new_bottom = [self.back[row][0] for row in range(self.size)]
 
-      new_right = [self.top[idx][0] for idx in range(self.size)]
+      new_right = [self.top[idx][-1] for idx in reversed(range(self.size))]
       new_left = [self.bottom[idx][-1] for idx in range(self.size)]
 
       # Transfer top and bottom to the sides
       # Top to right face in this orientation
       for idx in range(self.size):
          # Back to top
-         self.top[idx][0] = new_top[idx]
+         self.top[idx][-1] = new_top[idx]
          # Front to bottom
          self.bottom[idx][-1] = new_bottom[idx]
          # top to front
-         self.front[idx][0] = new_right[idx]
+         self.front[idx][-1] = new_right[idx]
          # bottom to back
-         self.back[idx][-1] = new_left[idx]
+         self.back[idx][0] = new_left[idx]
 
    def rotate_top(self):
       """
