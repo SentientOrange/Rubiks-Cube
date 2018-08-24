@@ -80,3 +80,7 @@ def test_rotate_bottom():
     c.rotate_face = MagicMock(return_value=c.bottom)
     c.rotate_bottom()
     assert c.front == [[0,0,0],[0,0,0],[1,1,1]]
+
+def test_print():
+    c = cube.Cube()
+    c.print_cube(c.top, c.left, c.front, c.right, c.back, c.bottom)

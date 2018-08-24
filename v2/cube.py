@@ -94,7 +94,7 @@ class Cube:
          # Back to top
          self.top[idx][0] = new_top[idx]
          # Front to bottom
-         self.bottom[idx][0] = new_bottom[idx]
+         self.bottom[idx][0] = new_bottom[::-1][idx]
          # top to front
          self.front[idx][0] = new_right[idx]
          # bottom to back
@@ -109,7 +109,7 @@ class Cube:
 
       # Grab the actual data being moved
       new_top = [self.front[row][-1] for row in range(self.size)]
-      new_bottom = [self.back[row][0] for row in range(self.size)]
+      new_bottom = [self.back[row][0] for row in reversed(range(self.size))]
 
       new_right = [self.top[idx][-1] for idx in reversed(range(self.size))]
       new_left = [self.bottom[idx][-1] for idx in range(self.size)]
@@ -122,9 +122,9 @@ class Cube:
          # Front to bottom
          self.bottom[idx][-1] = new_bottom[idx]
          # top to front
-         self.front[idx][-1] = new_right[idx]
+         self.front[idx][-1] = new_left[idx]
          # bottom to back
-         self.back[idx][0] = new_left[idx]
+         self.back[idx][0] = new_right[idx]
 
    def rotate_top(self):
       """
@@ -160,3 +160,15 @@ class Cube:
 		Returns the n dimension of the cube
 		"""
    	return self.size
+
+   def __printer__(self, top, left, front, right, back, bottom):
+      for row in top:
+         print("          " + str(row))
+      for idx in range(self.size):
+         print(str(left[idx]) + " " + str(front[idx]) + " " + str(right[idx]) + " " + str(back[idx]))
+      for row in bottom:
+         print("          " + str(row)) 
+
+   def print_cube(self, orientation="front"):
+      if orientation == "front":
+         self.__printer__(self.top, self.left, self.front, self.right, self.back, self.bottom)
