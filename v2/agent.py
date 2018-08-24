@@ -10,6 +10,7 @@ class Agent:
       self.cube = cube
       # All actions are performed in a clockwise rotation of one of six sides
       self.actions = ['front', 'back', 'left', 'right', 'top', 'bottom']
+      # The memory representaiton o 
 
    def get_actions(self):
       """
@@ -40,6 +41,10 @@ class Agent:
       Utilize some method of solving a rubik's cube and looks to solve it.
       """
       pass
-      
-
-      
+   
+   def heuristic(self, verbose=False):
+      """
+      Heuristic characteristic to this agent
+      Takes in a verbose argument. If this is true, we should print out the heuristic evaluations per state was we go
+      """
+      pass

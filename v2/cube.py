@@ -278,4 +278,3 @@ class Cube:
          solved = False
       # If we had no issues then the cube should be solved
       return solved
-      
