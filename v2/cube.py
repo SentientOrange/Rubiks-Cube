@@ -130,6 +130,14 @@ class Cube:
       """
       Rotate top clockwise
       """
+      #grab bottom row of front, left, right, back
+      temp = []
+      temp = self.front[0]
+      self.front[0] = self.right[0]
+      self.right[0] = self.back[0]
+      self.back[0] = self.left[0]
+      self.left[0] = temp
+
       # Rotate the face itself clockwisez 
       self.top = self.rotate_face(self.top)
 
