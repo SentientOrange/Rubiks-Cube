@@ -35,6 +35,11 @@ class Agent:
       elif action == 'bottom':
          self.cube.rotate_bottom()
       
+   def solve(self):
+      """
+      Utilize some method of solving a rubik's cube and looks to solve it.
+      """
+      pass
       
 
       
