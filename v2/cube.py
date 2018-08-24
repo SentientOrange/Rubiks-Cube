@@ -52,13 +52,27 @@ class Cube:
       self.top[-1] = new_top
       self.bottom[0] = new_bottom
       
-
    def rotate_back(self):
       """
       Rotate back face of the cube
       """
       # Rotate the face itself clockwise
       self.back = self.rotate_face(self.back)
+
+      new_top = [self.right[row][-1] for row in reversed(range(self.size))]
+      new_bottom = [self.left[row][0] for row in range(self.size)]
+      # Transfer top and bottom to the sides
+      # Top to right face in this orientation
+      for idx in range(self.size):
+         self.left[idx][0] = self.top[0][-1 - idx]
+
+      # Bottom to left
+      for idx in range(self.size):
+         self.right[idx][-1] = self.bottom[-1][-1 - idx]
+   
+      # Replace the top and bottom
+      self.top[0] = new_top[::-1]
+      self.bottom[-1] = new_bottom[::-1]
 
    def rotate_left(self):
       """
