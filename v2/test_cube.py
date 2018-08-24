@@ -143,6 +143,3 @@ def test_rotate_left():
     assert c.left == [[1,1,1],[1,1,1],[1,1,1]]
     assert c.right == [[4,4,4],[4,4,4],[4,4,4]]
 
-def test_print():
-    c = cube.Cube()
-    c.print_cube(c.top, c.left, c.front, c.right, c.back, c.bottom)
