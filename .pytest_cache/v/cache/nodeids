@@ -1,0 +1,12 @@
+[
+  "v2/test_cube.py::test_cube_size",
+  "v2/test_cube.py::test_cube_generation",
+  "v2/test_cube.py::test_cube_frontrotation",
+  "v2/test_cube.py::test_rotate_face",
+  "v2/test_cube.py::test_rotate_bottom",
+  "v2/test_cube.py::test_rotate_top",
+  "v2/test_cube.py::test_rotate_front",
+  "v2/test_cube.py::test_rotate_back",
+  "v2/test_cube.py::test_rotate_right",
+  "v2/test_cube.py::test_rotate_left"
+]
