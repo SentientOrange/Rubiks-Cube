@@ -2,6 +2,8 @@
 
 import pytest
 import cube
+import unittest
+from unittest.mock import MagicMock
 
 def test_cube_size():
    """
@@ -72,3 +74,9 @@ def test_rotate_back():
       assert c.top[0][idx] == 4
       assert c.bottom[-1][idx] == 1
       assert c.right[idx][-1] == 5
+
+def test_rotate_bottom():
+    c = cube.Cube()
+    c.rotate_face = MagicMock(return_value=c.bottom)
+    c.rotate_bottom()
+    assert c.front == [[0,0,0],[0,0,0],[1,1,1]]
