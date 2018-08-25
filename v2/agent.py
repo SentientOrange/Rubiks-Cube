@@ -36,15 +36,16 @@ class Agent:
       elif action == 'bottom':
          self.cube.rotate_bottom()
       
-   def solve(self):
+   def solve(self, verbose=False):
       """
       Utilize some method of solving a rubik's cube and looks to solve it.
+      Takes in a verbose argument. If this is true, we should print out the heuristic evaluations per state was we go
       """
       pass
    
-   def heuristic(self, verbose=False):
+   def heuristic(self):
       """
       Heuristic characteristic to this agent
-      Takes in a verbose argument. If this is true, we should print out the heuristic evaluations per state was we go
+
       """
       pass
