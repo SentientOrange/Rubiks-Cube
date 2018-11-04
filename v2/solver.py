@@ -7,3 +7,9 @@ cube = c.Cube()
 agent = a.Agent(cube)
 
 # Start
+TRAIN_CASES = 1000
+
+TEST_CASES = 1000
+
+for case in range(TEST_CASES):
+    # Scramble the cube

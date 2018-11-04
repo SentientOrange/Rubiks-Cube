@@ -10,7 +10,8 @@ class Agent:
       self.cube = cube
       # All actions are performed in a clockwise rotation of one of six sides
       self.actions = ['front', 'back', 'left', 'right', 'top', 'bottom']
-      # The memory representaiton o 
+      # The memory representaiton of states
+      self.q_table = {}
 
    def get_actions(self):
       """
