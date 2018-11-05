@@ -5,7 +5,8 @@ Q Learning was the technique chosen for this implementation of a Rubik's Cube So
 ## Topics
 - Reinforcement Learning with Q Learning
 - Machine Learning
-- Finding convergence for reward functions when evaluating huge state spaces (Linear Approximation)
+- Finding convergence for reward functions when evaluating huge state spaces
+  - Reduce the state space using a more generalized state representation
 
 ### Contributors
 - Derek Wang
