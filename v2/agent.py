@@ -114,7 +114,7 @@ class Agent:
 
          if verbose:
             #print("Iteration",iteration,":",key, " found to have a score of ", q_score, "from best move",best_move)
-            print("Moves:", iteration, " - states seen",len(self.q_table))
+            print("Moves:", iteration, "- states seen",len(self.q_table))
 
          # By the end of this, the cube should be completed
          # Since this could take a while try limiting loops
