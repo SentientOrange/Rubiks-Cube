@@ -92,7 +92,6 @@ class Cube:
         """
         return self.__bottom__
 
-
     def rotate_face(self, matrix):
         """
         Takes in the 2 dimentional face representation and performs the matrix operation of clockwise rotation
