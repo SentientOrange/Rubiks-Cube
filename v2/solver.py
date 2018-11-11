@@ -16,16 +16,18 @@ SCRAMBLE_MOVES = 20
 
 MAX_MOVES = 200
 
-EXPLORATION_PERCENTAGE = 95
+EXPLORATION_PERCENTAGE = 80
 
 GAMMA = 0.8
 
 ALPHA = 0.2
 
+SIZE = 3
+
 # Build the q learning table training the agent
 for case in range(TRAIN_CASES):
     # Scramble the cube
-    cube = c.Cube()
+    cube = c.Cube(SIZE)
     cube.scramble(SCRAMBLE_MOVES)
     print("Running Training Case", case)
 
@@ -41,7 +43,7 @@ successes = 0
 
 for case in range(TEST_CASES):
     # Scramble the cube
-    cube = c.Cube()
+    cube = c.Cube(SIZE)
     cube.scramble(SCRAMBLE_MOVES)
 
     # The agent should attempt to solve the cube.

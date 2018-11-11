@@ -97,7 +97,7 @@ class Cube:
         Takes in the 2 dimentional face representation and performs the matrix operation of clockwise rotation
         The new matrix is returned
         """
-        temp = [[],[],[]] # Generate the new matrix
+        temp = [[] for x in range(self.__size__)] # Generate the new matrix
         for x in reversed(range(self.__size__)):
             for y in range(self.__size__):
                 temp[y].append(matrix[x][y])
@@ -221,11 +221,11 @@ class Cube:
         """
         #grab bottom row of front, left, right, back
         temp = []
-        temp = self.__front__[2]
-        self.__front__[2] = self.__left__[2]
-        self.__left__[2] = self.__back__[2]
-        self.__back__[2] = self.__right__[2]
-        self.__right__[2] = temp
+        temp = self.__front__[-1]
+        self.__front__[-1] = self.__left__[-1]
+        self.__left__[-1] = self.__back__[-1]
+        self.__back__[-1] = self.__right__[-1]
+        self.__right__[-1] = temp
         # Rotate the face itself clockwise
         self.__bottom__ = self.rotate_face(self.__bottom__)
 
