@@ -11,8 +11,8 @@ import random
 
 class Cube:
     # Init the cube using a give size
-    def __init__(self):
-        self.__size__ = 3
+    def __init__(self,size=3):
+        self.__size__ = size
         self.__front__ = [[0 for x in range(self.__size__)] for x in range(self.__size__)]
         self.__left__ = [[1 for x in range(self.__size__)] for x in range(self.__size__)]
         self.__back__ = [[2 for x in range(self.__size__)] for x in range(self.__size__)]
@@ -21,37 +21,37 @@ class Cube:
         self.__bottom__ = [[5 for x in range(self.__size__)] for x in range(self.__size__)]
         
     def set_front(self, l):
-        if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+        if len(l) == self.__size__ & len(l[0]) == self.__size__ & len(l[1]) == self.__size__ & len(l[2]) == self.__size__:
             self.__front__ = l
         else:
             raise Exception("Input lists incorrect length")
 
     def set_left(self, l):
-        if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+        if len(l) == self.__size__ & len(l[0]) == self.__size__ & len(l[1]) == self.__size__ & len(l[2]) == self.__size__:
             self.__left__ = l
         else:
             raise Exception("Input lists incorrect length")
 
     def set_back(self, l):
-        if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+        if len(l) == self.__size__ & len(l[0]) == self.__size__ & len(l[1]) == self.__size__ & len(l[2]) == self.__size__:
             self.__back__ = l
         else:
             raise Exception("Input lists incorrect length")
 
     def set_top(self, l):
-        if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+        if len(l) == self.__size__ & len(l[0]) == self.__size__ & len(l[1]) == self.__size__ & len(l[2]) == self.__size__:
             self.__top__ = l
         else:
             raise Exception("Input lists incorrect length")
 
     def set_right(self, l):
-        if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+        if len(l) == self.__size__ & len(l[0]) == self.__size__ & len(l[1]) == self.__size__ & len(l[2]) == self.__size__:
             self.__right__ = l
         else:
             raise Exception("Input lists incorrect length")
 
     def set_bottom(self, l):
-        if len(l) == 3 & len(l[0]) == 3 & len(l[1]) == 3 & len(l[2]) == 3:
+        if len(l) == self.__size__ & len(l[0]) == self.__size__ & len(l[1]) == self.__size__ & len(l[2]) == self.__size__:
             self.__bottom__ = l
         else:
             raise Exception("Input lists incorrect length")
