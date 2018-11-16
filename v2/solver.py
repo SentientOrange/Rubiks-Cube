@@ -1,6 +1,7 @@
 # Implementation of the solver
 import cube as c
 import agent as a
+import copy
 
 # Get a new agent
 agent = a.Agent()
@@ -24,11 +25,14 @@ ALPHA = 1 # LEARNING RATE
 
 SIZE = 2
 
+base = c.Cube(SIZE)
+base.scramble(SCRAMBLE_MOVES)
+
 # Build the q learning table training the agent
 for case in range(TRAIN_CASES):
     # Scramble the cube
-    cube = c.Cube(SIZE)
-    cube.scramble(SCRAMBLE_MOVES)
+
+    cube = copy.deepcopy(base)
     print("Running Training Case:", case)
     print("Cube size:", SIZE)
     print("Training with DISCOUNT FACTOR (GAMMA):", GAMMA, "- LEARNING RATE (ALPHA)", ALPHA, "- EXPLORATION PERCENTAGE", EXPLORATION_PERCENTAGE,"%")
