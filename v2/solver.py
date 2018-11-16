@@ -8,7 +8,7 @@ agent = a.Agent()
 actions = agent.get_actions()
 
 # Start
-TRAIN_CASES = 1
+TRAIN_CASES = 45
 
 TEST_CASES = 1000
 
@@ -16,24 +16,27 @@ SCRAMBLE_MOVES = 20
 
 MAX_MOVES = 200
 
-EXPLORATION_PERCENTAGE = 80
+EXPLORATION_PERCENTAGE = 15
 
-GAMMA = 0.8
+GAMMA = 0.8 # DISCOUNT FACTOR
 
-ALPHA = 0.2
+ALPHA = 1 # LEARNING RATE
 
-SIZE = 3
+SIZE = 2
 
 # Build the q learning table training the agent
 for case in range(TRAIN_CASES):
     # Scramble the cube
     cube = c.Cube(SIZE)
     cube.scramble(SCRAMBLE_MOVES)
-    print("Running Training Case", case)
+    print("Running Training Case:", case)
+    print("Cube size:", SIZE)
+    print("Training with DISCOUNT FACTOR (GAMMA):", GAMMA, "- LEARNING RATE (ALPHA)", ALPHA, "- EXPLORATION PERCENTAGE", EXPLORATION_PERCENTAGE,"%")
 
     # The agent should attempt to solve the cube.
-    agent.solve(cube, MAX_MOVES, EXPLORATION_PERCENTAGE, GAMMA,alpha=ALPHA, verbose=True)
+    agent.solve(cube, MAX_MOVES, EXPLORATION_PERCENTAGE, GAMMA,alpha=ALPHA, verbose=False)
     print("Agent has seen", len(agent.q_table),"possible states")
+    print()
 
 print("Agent trained on",TRAIN_CASES,"training cases")
 
@@ -43,6 +46,7 @@ successes = 0
 
 for case in range(TEST_CASES):
     # Scramble the cube
+    print("Test Case ", case)
     cube = c.Cube(SIZE)
     cube.scramble(SCRAMBLE_MOVES)
 

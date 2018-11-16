@@ -119,6 +119,8 @@ class Agent:
          # By the end of this, the cube should be completed
          # Since this could take a while try limiting loops
          iteration += 1
+      
+      print("Cube Solved in", iteration, "moves")
 
 
    def get_state_rep(self, cube):
