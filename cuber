@@ -1,0 +1,8 @@
+#! /usr/bin/env python3
+
+"""
+Run the agent with the given cube
+"""
+
+if __name__ == "__main__":
+    print("Starting the agent...")
