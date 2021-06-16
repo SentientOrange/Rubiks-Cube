@@ -3,3 +3,4 @@ test:
 
 format:
 	black ./*.py --line-length 80
+	black ./cuber --line-length 80
