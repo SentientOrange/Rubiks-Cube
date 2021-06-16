@@ -45,6 +45,9 @@ class Move:
         c = "clockwise" if self.clockwise else "counter-clockwise"
         return f"Move rotated {self.plane} {self.idx} index {c}"
 
+    def __repr__(self):
+        return f"Move({self.idx}, {self.plane}, {self.clockwise})"
+
     @classmethod
     def random_move(cls, size: int):
         p = choice(list(Plane))
@@ -62,7 +65,6 @@ class CubeSide:
         self.size = size
         self.state = [[init_color for _ in range(size)] for _ in range(size)]
 
-    
     def get_col(self, idx: int, rev: bool = False) -> List[Color]:
         ret = [row[idx] for row in self.state]
         if rev:
@@ -75,14 +77,12 @@ class CubeSide:
             ret.reverse()
         return ret
 
-
     def check(self) -> bool:
         target: Color = self.state[0][0]
         for row in self.state:
             if not all(cell == target for cell in row):
                 return False
         return True
-
 
     def apply_change(self, change: List[Color], idx: int, col: bool = False):
         if col:
@@ -91,7 +91,6 @@ class CubeSide:
         else:
             for i in range(self.size):
                 self.state[idx] = change
-
 
     def rotate(self, clockwise: bool = True):
         new_state = [[] for _ in range(self.size)]
@@ -110,6 +109,7 @@ class CubeSide:
             print(row)
         print()
 
+
 class Cube:
     def __init__(self, size: int = 3) -> None:
         self.size = size
@@ -121,11 +121,17 @@ class Cube:
         self.top = CubeSide("top", self.size, Color.WHITE)
         self.bottom = CubeSide("bottom", self.size, Color.ORANGE)
 
-        self.sides = (self.front, self.back, self.left, self.right,self.top, self.bottom)
+        self.sides = (
+            self.front,
+            self.back,
+            self.left,
+            self.right,
+            self.top,
+            self.bottom,
+        )
 
         # Preload choices so we don't have to recreate a list every time
         self.plane_choices = list(Plane)
-
 
     def rotate(self, m: Move):
         """
@@ -164,13 +170,23 @@ class Cube:
             front_save = self.front.get_col(index)
             if clockwise:
                 self.front.apply_change(self.top.get_col(index), index, True)
-                self.top.apply_change(self.back.get_col(self.size - 1 - index, True), index, True)
-                self.back.apply_change(self.bottom.get_col(index, True), self.size - 1 - index, True)
+                self.top.apply_change(
+                    self.back.get_col(self.size - 1 - index, True), index, True
+                )
+                self.back.apply_change(
+                    self.bottom.get_col(index, True),
+                    self.size - 1 - index,
+                    True,
+                )
                 self.bottom.apply_change(front_save, index, True)
             else:
                 self.front.apply_change(self.bottom.get_col(index), index, True)
-                self.bottom.apply_change(self.back.get_col(self.size - 1 - index, True), index, True)
-                self.back.apply_change(self.top.get_col(index, True), self.size - 1 - index, True)
+                self.bottom.apply_change(
+                    self.back.get_col(self.size - 1 - index, True), index, True
+                )
+                self.back.apply_change(
+                    self.top.get_col(index, True), self.size - 1 - index, True
+                )
                 self.top.apply_change(front_save, index, True)
         elif plane == Plane.Z:
             if index == 0:
@@ -179,15 +195,30 @@ class Cube:
                 self.back.rotate(not clockwise)
             right_save = self.right.get_col(index)
             if clockwise:
-                self.right.apply_change(self.top.get_row(self.size - 1 - index), index, True)
-                self.top.apply_change(self.left.get_col(self.size - 1 - index, True), self.size - 1 - index)
-                self.left.apply_change(self.bottom.get_row(index, True), self.size - 1 - index, True)
+                self.right.apply_change(
+                    self.top.get_row(self.size - 1 - index), index, True
+                )
+                self.top.apply_change(
+                    self.left.get_col(self.size - 1 - index, True),
+                    self.size - 1 - index,
+                )
+                self.left.apply_change(
+                    self.bottom.get_row(index, True),
+                    self.size - 1 - index,
+                    True,
+                )
                 right_save.reverse()
                 self.bottom.apply_change(right_save, index)
             else:
                 self.right.apply_change(self.bottom.get_row(index), index, True)
-                self.bottom.apply_change(self.left.get_col(self.size - 1 - index), index)
-                self.left.apply_change(self.top.get_row(self.size - 1 - index, True), self.size - 1 - index, True)
+                self.bottom.apply_change(
+                    self.left.get_col(self.size - 1 - index), index
+                )
+                self.left.apply_change(
+                    self.top.get_row(self.size - 1 - index, True),
+                    self.size - 1 - index,
+                    True,
+                )
                 self.top.apply_change(right_save, self.size - 1 - index)
 
     def scramble(self, turns: int = 15):
@@ -207,7 +238,7 @@ class Cube:
         Checks if the cube is solved yet
         """
         return all(side.check() for side in self.sides)
-            
+
     def print(self) -> None:
         """
         Print out a representation of the cube to the command line

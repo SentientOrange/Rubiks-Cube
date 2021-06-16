@@ -5,10 +5,7 @@ from cube import Color, Cube, CubeSide, Move, Plane
 
 class TestMove(TestCase):
     def test_reverse(self):
-        move_cases = [
-            Move(0, Plane.X, True),
-            Move(1, Plane.Z, False)
-        ]
+        move_cases = [Move(0, Plane.X, True), Move(1, Plane.Z, False)]
         for m in move_cases:
             rev = m.reverse()
             self.assertEqual(m.idx, rev.idx)
@@ -65,7 +62,6 @@ class TestCubeSide(TestCase):
         self.assertEqual(c.state[2][1], Color.RED)
         self.assertEqual(c.state[2][2], Color.YELLOW)
 
-
     def test_get_row(self):
         c = CubeSide("test", 3, Color.RED)
         # Manually alter the sides
@@ -85,7 +81,7 @@ class TestCubeSide(TestCase):
 class TestCube(TestCase):
     def test_full_plane_rotation(self):
         c = Cube()
-        for clock_dir  in (True, False):
+        for clock_dir in (True, False):
             for p in list(Plane):
                 for idx in range(c.size):
                     m = Move(idx, p, clock_dir)
@@ -98,12 +94,12 @@ class TestCube(TestCase):
 
     def test_all_actions_reversible(self):
         c = Cube()
-        chains = (1,2,3)
+        chains = (1, 2, 3)
         for chain in chains:
-            for clock_dir  in (True, False):
+            for clock_dir in (True, False):
                 for p in list(Plane):
                     for idx in range(c.size):
-                        m = Move(idx, p, clock_dir)        
+                        m = Move(idx, p, clock_dir)
                         self.assertTrue(c.solved())
                         for _ in range(chain):
                             c.rotate(m)
@@ -117,12 +113,33 @@ class TestCube(TestCase):
             Move(2, Plane.Z, True),
             Move(1, Plane.Z, False),
             Move(2, Plane.Y, True),
-            Move(0, Plane.X, False)
+            Move(0, Plane.X, False),
         ]
-    
+
         rev = [m.reverse() for m in moves]
 
         for n in range(1, len(moves) + 1):
+            c = Cube()
+            for i in range(n):
+                c.rotate(moves[i])
+            self.assertFalse(c.solved())
+            for i in rev[:n][::-1]:
+                c.rotate(i)
+            self.assertTrue(c.solved())
+
+    def test_many_fail(self):
+        moves = [
+            Move(2, Plane.X, False),
+            Move(0, Plane.Y, True),
+            Move(1, Plane.Y, False),
+            Move(2, Plane.Z, False),
+            Move(2, Plane.X, True),
+        ]
+
+        rev = [m.reverse() for m in moves]
+
+        for n in range(1, len(moves) + 1):
+            print(n)
             c = Cube()
             for i in range(n):
                 c.rotate(moves[i])
@@ -148,12 +165,11 @@ class TestRandomCube(TestCase):
         for r in reverse_all:
             c.rotate(r)
         if not c.solved():
-            print(c.print())
+            c.print()
             for m in many_moves:
-                print(m)
+                print(repr(m))
         self.assertTrue(c.solved())
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
