@@ -3,6 +3,9 @@
 """
 Run the agent with the given cube
 """
+from cube import Cube, Plane
 
 if __name__ == "__main__":
     print("Starting the agent...")
+    cube = Cube()
+    print(f"Cube solved: {cube.check()}")
