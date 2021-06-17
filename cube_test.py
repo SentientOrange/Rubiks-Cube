@@ -127,26 +127,25 @@ class TestCube(TestCase):
                 c.rotate(i)
             self.assertTrue(c.solved())
 
+
     def test_many_fail(self):
         moves = [
+            Move(1, Plane.X, False),
             Move(2, Plane.X, False),
-            Move(0, Plane.Y, True),
-            Move(1, Plane.Y, False),
-            Move(2, Plane.Z, False),
-            Move(2, Plane.X, True),
+            #Move(2, Plane.Z, False),
+            # Move(0, Plane.X, False),
+            # Move(1, Plane.Y, False),
         ]
 
         rev = [m.reverse() for m in moves]
 
-        for n in range(1, len(moves) + 1):
-            print(n)
-            c = Cube()
-            for i in range(n):
-                c.rotate(moves[i])
-            self.assertFalse(c.solved())
-            for i in rev[:n][::-1]:
-                c.rotate(i)
-            self.assertTrue(c.solved())
+        c = Cube()
+        for i in range(len(moves)):
+            c.rotate(moves[i])
+        c.print()
+        for i in rev[::-1]:
+            c.rotate(i)
+        self.assertTrue(c.solved())
 
 
 class TestRandomCube(TestCase):
@@ -164,10 +163,10 @@ class TestRandomCube(TestCase):
         reverse_all.reverse()
         for r in reverse_all:
             c.rotate(r)
-        if not c.solved():
-            c.print()
-            for m in many_moves:
-                print(repr(m))
+        
+        print()
+        for m in many_moves:
+            print(repr(m))
         self.assertTrue(c.solved())
 
 

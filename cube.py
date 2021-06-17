@@ -114,12 +114,12 @@ class Cube:
     def __init__(self, size: int = 3) -> None:
         self.size = size
         # Initialize the cube state
-        self.front = CubeSide("front", self.size, Color.YELLOW)
-        self.back = CubeSide("back", self.size, Color.RED)
-        self.left = CubeSide("left", self.size, Color.BLUE)
-        self.right = CubeSide("right", self.size, Color.GREEN)
-        self.top = CubeSide("top", self.size, Color.WHITE)
-        self.bottom = CubeSide("bottom", self.size, Color.ORANGE)
+        self.front = CubeSide("front", self.size, Color.BLUE)
+        self.back = CubeSide("back", self.size, Color.GREEN)
+        self.left = CubeSide("left", self.size, Color.WHITE)
+        self.right = CubeSide("right", self.size, Color.YELLOW)
+        self.top = CubeSide("top", self.size, Color.ORANGE)
+        self.bottom = CubeSide("bottom", self.size, Color.RED)
 
         self.sides = (
             self.front,
@@ -210,7 +210,7 @@ class Cube:
                 right_save.reverse()
                 self.bottom.apply_change(right_save, index)
             else:
-                self.right.apply_change(self.bottom.get_row(index), index, True)
+                self.right.apply_change(self.bottom.get_row(index, True), index, True)
                 self.bottom.apply_change(
                     self.left.get_col(self.size - 1 - index), index
                 )
