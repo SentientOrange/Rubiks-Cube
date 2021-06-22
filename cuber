@@ -1,9 +1,51 @@
 #! /usr/bin/env python3
-
 """
 Run the agent with the given cube
 """
-from cube import Cube, Move
+import argparse
+
+from agent import Agent, QAgent
+from cube import Cube
+
+
+AGENT_TYPES = {"q_agent": QAgent}
+
+
+def main(agent: Agent, runs: int = 1):
+
+    agent_instance = agent()
+
+    for _ in range(runs):
+        cube = Cube()
+        cube.scramble()
+
+        cube.print()
+
+        agent_instance.solve(cube)
+        moves = agent_instance.get_moves()
+
+        for m in moves:
+            print(m)
+
+        cube.print()
+
 
 if __name__ == "__main__":
-    print("Starting the agent...")
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--agent",
+        help="Agent Type",
+        type=str,
+        required=True,
+        choices=AGENT_TYPES,
+    )
+    parser.add_argument(
+        "--runs",
+        type=int,
+        required=False,
+        help="Number of times to run the agent",
+        default=1,
+    )
+    args = parser.parse_args()
+
+    main(AGENT_TYPES[args.agent], args.runs)

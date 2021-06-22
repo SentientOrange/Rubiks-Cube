@@ -127,7 +127,6 @@ class TestCube(TestCase):
                 c.rotate(i)
             self.assertTrue(c.solved())
 
-
     def test_many_fail(self):
         moves = [
             Move(1, Plane.X, False),
@@ -161,6 +160,11 @@ class TestRandomCube(TestCase):
         for r in reverse_all:
             c.rotate(r)
         self.assertTrue(c.solved())
+
+
+    def test_print(self):
+        c = Cube()
+        c.print()
 
 
 if __name__ == "__main__":

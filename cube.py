@@ -102,12 +102,28 @@ class CubeSide:
                     new_state[self.size - 1 - idx].append(val)
         self.state = new_state
 
-    def print(self):
+    def get_row_str(self, index: int) -> str:
+        return str([element.name[0] for element in self.state[index]])
+
+    def to_string(self) -> str:
+        output = ""
+        for i in range(len(self.state)):
+            row_str = self.get_row_str(i)
+            output = f"{output}{row_str}\n"
+        return output
+
+    def print(self) -> None:
         print(self.name)
         print("\n======\n")
-        for row in self.state:
-            print(row)
-        print()
+        print(self.to_string())
+
+    @classmethod
+    def spacer(cls, size: int) -> str:
+        commas = size - 1
+        spacers = size - 1
+        quotes = size * 2
+        parens = 2
+        return " " * (commas + spacers + quotes + parens + size)
 
 
 class Cube:
@@ -203,14 +219,14 @@ class Cube:
                     self.size - 1 - index,
                 )
                 self.left.apply_change(
-                    self.bottom.get_row(index),
-                    self.size - 1 - index,
-                    True,
+                    self.bottom.get_row(index), self.size - 1 - index, True
                 )
                 right_save.reverse()
                 self.bottom.apply_change(right_save, index)
             else:
-                self.right.apply_change(self.bottom.get_row(index, True), index, True)
+                self.right.apply_change(
+                    self.bottom.get_row(index, True), index, True
+                )
                 self.bottom.apply_change(
                     self.left.get_col(self.size - 1 - index), index
                 )
@@ -243,5 +259,22 @@ class Cube:
         """
         Print out a representation of the cube to the command line
         """
-        for side in self.sides:
-            side.print()
+        print()
+        spacer = CubeSide.spacer(self.size)
+
+        # top
+        for row_idx in range(self.size):
+            print(f"{spacer}{self.top.get_row_str(row_idx)}")
+
+        # middle
+        for row_idx in range(self.size):
+            left = self.left.get_row_str(row_idx)
+            front = self.front.get_row_str(row_idx)
+            right = self.right.get_row_str(row_idx)
+            back = self.back.get_row_str(row_idx)
+            print(f"{left}{right}{front}{back}")
+
+        # bottom
+        for row_idx in range(self.size):
+            print(f"{spacer}{self.bottom.get_row_str(row_idx)}")
+        print()
