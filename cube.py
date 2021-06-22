@@ -203,7 +203,7 @@ class Cube:
                     self.size - 1 - index,
                 )
                 self.left.apply_change(
-                    self.bottom.get_row(index, True),
+                    self.bottom.get_row(index),
                     self.size - 1 - index,
                     True,
                 )

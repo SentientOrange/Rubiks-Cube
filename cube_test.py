@@ -156,15 +156,11 @@ class TestRandomCube(TestCase):
         many_moves = [Move.random_move(c.size) for _ in range(5)]
         for m in many_moves:
             c.rotate(m)
-        # Technically it's possible for the random moves to solve the cube but this is unlikelys
-        self.assertFalse(c.solved())
         reverse_all = [m.reverse() for m in many_moves]
         # apply in reverse order
         reverse_all.reverse()
         for r in reverse_all:
             c.rotate(r)
-        
-        print()
         for m in many_moves:
             print(repr(m))
         self.assertTrue(c.solved())
