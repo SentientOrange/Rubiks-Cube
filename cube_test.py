@@ -161,7 +161,6 @@ class TestRandomCube(TestCase):
             c.rotate(r)
         self.assertTrue(c.solved())
 
-
     def test_print(self):
         c = Cube()
         c.print()

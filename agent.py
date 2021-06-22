@@ -22,5 +22,17 @@ class QAgent(Agent):
         super().__init__()
         self.mem = {}
 
-    def solve(self, cube: Cube) -> None:
+    def get_state(self, cube: Cube) -> None:
+        """
+        Condense a cube's state into something that takes up less memory
+        """
         pass
+
+    def get_next_move(self, cube: Cube) -> Move:
+        return Move.random_move(cube.size)
+
+    def solve(self, cube: Cube) -> None:
+        while not cube.solved():
+            move = self.get_next_move(cube)
+            self.moves_list.append(move)
+            cube.rotate(move)
