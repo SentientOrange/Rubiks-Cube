@@ -132,9 +132,9 @@ class TestCube(TestCase):
         moves = [
             Move(1, Plane.X, False),
             Move(2, Plane.X, False),
-            #Move(2, Plane.Z, False),
-            # Move(0, Plane.X, False),
-            # Move(1, Plane.Y, False),
+            Move(2, Plane.Z, False),
+            Move(0, Plane.X, False),
+            Move(1, Plane.Y, False),
         ]
 
         rev = [m.reverse() for m in moves]
@@ -142,7 +142,6 @@ class TestCube(TestCase):
         c = Cube()
         for i in range(len(moves)):
             c.rotate(moves[i])
-        c.print()
         for i in rev[::-1]:
             c.rotate(i)
         self.assertTrue(c.solved())
@@ -153,7 +152,7 @@ class TestRandomCube(TestCase):
 
     def test_many_reversible(self):
         c = Cube()
-        many_moves = [Move.random_move(c.size) for _ in range(5)]
+        many_moves = [Move.random_move(c.size) for _ in range(5000)]
         for m in many_moves:
             c.rotate(m)
         reverse_all = [m.reverse() for m in many_moves]
@@ -161,8 +160,6 @@ class TestRandomCube(TestCase):
         reverse_all.reverse()
         for r in reverse_all:
             c.rotate(r)
-        for m in many_moves:
-            print(repr(m))
         self.assertTrue(c.solved())
 
 
